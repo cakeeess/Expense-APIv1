@@ -26,9 +26,9 @@ const ExpenseTracker = () => {
     try {
       const res = await fetch("https://fakestoreapi.com/products");
       if (!res.ok) throw new Error("API error");
-
+      console.log(res)
       const data = await res.json();
-
+      console.log(data)
       const fakeData = data.map((item) => {
         const randDate = randomDateBetween(fromDate, toDate);
         return {
@@ -38,8 +38,6 @@ const ExpenseTracker = () => {
           date: formatDate(randDate),
         };
       });
-
-
       setTransactions(fakeData);
     } catch (err) {
       console.error(err);
